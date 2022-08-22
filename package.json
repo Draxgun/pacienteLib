@@ -1,0 +1,23 @@
+{
+  "name": "pacientelib",
+  "version": "1.0.0",
+  "description": "In this project I will develop a system to manage dental records and patients.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Draxgun/pacienteLib.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Draxgun/pacienteLib/issues"
+  },
+  "homepage": "https://github.com/Draxgun/pacienteLib#readme",
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
