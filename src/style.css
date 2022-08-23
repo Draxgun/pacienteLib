@@ -84,29 +84,62 @@ main{
 }
 
 
+
 .mainTable{
     width: 100%;
     background-color: var(--blue);
     height: 700px;
     max-height: 90%;
     border-radius: 10px;
-    padding: 30px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap:10px
 }
 
-.patientCard{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+table {
+    width: 90%;
+    border-collapse: collapse;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+    border: 1 px solid var(--cold);
+}
+
+th {
+    font-size: calc(3px + 1vw);
+    border: 1px solid var(--cold);
+    padding: 10px 20px;
+    background-color: var(--cold);
     color: var(--white);
     font-weight: bold;
-    width: 150px;
-    height: 200px;
-    background-color: var(--cold);
-    border-radius: 10px;
 }
 
+td, th {
+    border: 1px solid rgb(190,190,190);
+    padding: 10px 20px;
+  }
+
+
+
+
+
 #addPatientButton{
-    font-size: calc(20px + 1vw);
+    font-size: calc(3px + 1vw);
+    background-color: var(--cold);
+    padding: 10px;
+    color: var(--white);
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+
+}
+
+#addPatientButton:hover{
+    filter: brightness(85%);
 }
 
 
