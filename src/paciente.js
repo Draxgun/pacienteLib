@@ -17,6 +17,30 @@ class Paciente {
     
 }
 
+class Expediente {
+  constructor(cita,paciente){
+    this.cita = cita
+    this.paciente = paciente
+  }
+}
+
+class Cita {
+  constructor(paciente,fecha,notas){
+    this.paciente = paciente
+    this.fecha = fecha
+    this.notas = notas
+  }
+}
+
+class Biblioteca {
+  constructor(pacientes){
+    this.pacientes = pacientes
+  }
+}
+
 export{
-  Paciente
+  Paciente,
+  Expediente,
+  Cita,
+  Biblioteca
 }
