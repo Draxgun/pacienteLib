@@ -88,8 +88,25 @@ main{
     width: 100%;
     background-color: var(--blue);
     height: 700px;
-    max-height: 80%;
+    max-height: 90%;
     border-radius: 10px;
+    padding: 30px;
+}
+
+.patientCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-weight: bold;
+    width: 150px;
+    height: 200px;
+    background-color: var(--cold);
+    border-radius: 10px;
+}
+
+#addPatientButton{
+    font-size: calc(20px + 1vw);
 }
 
 
