@@ -1,5 +1,6 @@
 import {createDOMContainer,createDOMElement} from './domCreatorFunctions'
 import {createModalStructure} from './modalCreators'
+import {loadData} from './data'
 
 
 
