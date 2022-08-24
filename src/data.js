@@ -1,6 +1,6 @@
 import general from './excel/generales.csv'
 import alergias from './excel/alergias.csv'
-import dentofacial from 'src/excel/anomalias.csv'
+import dentofacial from './excel/anomalias.csv'
 import caries from   './excel/caries.csv'
 import dientes from './excel/dientes.csv'
 import enfermedades from    './excel/enfermedades.csv'
@@ -22,10 +22,24 @@ import tratamientos from './excel/tratamientos.csv'
 
 
 
-let test = () =>{
-    let diagnosticosGenerales = deArray(general)
-    console.log(diagnosticosGenerales)
+let loadData = () =>{
+
+
+    let generalArray = deArray(general)
+    let alergiasArray = deArray(alergias)
+    let enfermedadesArray = deArray(enfermedades)
+    let habitosArray = deArray(habitos)
+    let tratamientosArray = deArray(tratamientos)
+    let generalesArray = [dentofacial,caries,dientes,lengua,pulpa,salivales,estomatitis,gingivitis,luxacion,labiosOtros,maxilaresOtros,tejidosOtros,enciaTranstorno,dientesOtros,quistes,desarrollo]
+    
+    
+
+    let mainArray = [generalArray,alergiasArray,enfermedadesArray,habitosArray,tratamientosArray,generalesArray]
+    
+    console.log(mainArray)
+    return mainArray
 }
+
 
 
 
@@ -39,5 +53,5 @@ let deArray = (array) => {
 
 
 export{
-    test
+    loadData
 }

@@ -1,11 +1,10 @@
 import { loadPageStructure } from "./home";
 import './style.css';
-import{test} from './data'
+import{loadData} from './data'
 import{addPatientModalContent} from './patientModal'
 
 
 
-
+loadData()
 loadPageStructure()
 addPatientModalContent()
-test()
