@@ -226,8 +226,9 @@ button:focus {
 
 
 .patientFormBottom{
+    justify-content: center;
     display: flex;
-    gap: 10px;
+    gap: 100px;
 }
 
 
@@ -247,11 +248,19 @@ button:focus {
     text-align: center;
 }
 
-.checkboxContainer{
-    width: 600px;
+.enfermedadesContainer > .checkboxContainer{
+    display: flex;
+    flex-direction: column;
+    width: auto;
     flex-wrap: wrap;
     height: 300px;
+    padding: 20px;
 }
+.enfermedadesContainer{
+    width: auto;
+}
+
+
 
   /* The Close Button */
 .close {
