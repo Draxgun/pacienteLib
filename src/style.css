@@ -21,6 +21,8 @@ body{
     background-color: var(--white);
 }
 
+
+
 header{
     display: flex;
     justify-content: center;
@@ -152,6 +154,7 @@ button:focus {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
+    padding-top: 0px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -159,28 +162,66 @@ button:focus {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-  .modalContent {
+    justify-content: start;
+}
+    /* Modal Content/Box */
+.modalContent {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 10px auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
+    width: 90%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
   
-  /* The Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
+.modalHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.modalHeaderTitle{
+    font-size: calc(20px + 1vw);
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
+} 
+
+.patientFormTop{
+    display: flex;
+}
+
+.patientFormRight, .patientFormLeft{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex: auto;
+    width: 50%;
+    gap: 10px;
+}
+
+.patientFormBottom{
+    display: flex;
+}
+
+.alergiasContainer , .enfermedadesContainer, .habitosContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+
+  /* The Close Button */
+.close {
+float: right;
+background: none;
+border: none;
+color: black;
+font-size: 28px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
+}
