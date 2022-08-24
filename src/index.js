@@ -5,6 +5,5 @@ import{addPatientModalContent} from './patientModal'
 
 
 
-loadData()
 loadPageStructure()
 addPatientModalContent()

@@ -30,13 +30,14 @@ let loadData = () =>{
     let enfermedadesArray = deArray(enfermedades)
     let habitosArray = deArray(habitos)
     let tratamientosArray = deArray(tratamientos)
+
+    
     let generalesArray = [dentofacial,caries,dientes,lengua,pulpa,salivales,estomatitis,gingivitis,luxacion,labiosOtros,maxilaresOtros,tejidosOtros,enciaTranstorno,dientesOtros,quistes,desarrollo]
     
     
 
     let mainArray = [generalArray,alergiasArray,enfermedadesArray,habitosArray,tratamientosArray,generalesArray]
     
-    console.log(mainArray)
     return mainArray
 }
 
