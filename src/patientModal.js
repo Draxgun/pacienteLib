@@ -105,6 +105,8 @@ let addPatientModalContent = () => {
     let alergiasLabel = createDOMElement('label','formTitle','Alergias')
     alergiasContainer.appendChild(alergiasLabel)
 
+    let checkboxContainerAlergias = createDOMContainer('checkboxContainer')
+
     for (let i=0; i<alergias.length;i++){
         console.log(alergias[i])
         let currentAlergyInput = createDOMElement('input','alergyCheckbox','',`alergy${alergias[i]}`)
@@ -119,8 +121,12 @@ let addPatientModalContent = () => {
         container.appendChild(currentAlergyInput)
         container.appendChild(currentAlergyLabel)
 
-        alergiasContainer.appendChild(container)
+        checkboxContainerAlergias.appendChild(container)
     }
+
+    alergiasContainer.appendChild(checkboxContainerAlergias)
+
+
 
     bottomSide.appendChild(alergiasContainer)
 
@@ -130,6 +136,8 @@ let addPatientModalContent = () => {
     /*enfermedades*/
     let enfermedadesLabel = createDOMElement('label','formTitle','enfermedades')
     enfermedadesContainer.appendChild(enfermedadesLabel)
+
+    let checkboxContainerEnfermedades = createDOMContainer('checkboxContainer')
 
     for (let i=0; i<enfermedades.length;i++){
         console.log(enfermedades[i])
@@ -147,8 +155,11 @@ let addPatientModalContent = () => {
         container.appendChild(currentAlergyInput)
         container.appendChild(currentAlergyLabel)
 
-        enfermedadesContainer.appendChild(container)
-    }
+        checkboxContainerEnfermedades.appendChild(container)
+    } 
+
+    enfermedadesContainer.appendChild(checkboxContainerEnfermedades)
+
 
     bottomSide.appendChild(enfermedadesContainer)
 
@@ -158,6 +169,8 @@ let addPatientModalContent = () => {
     /*habitos*/
     let habitosLabel = createDOMElement('label','formTitle','habitos')
     habitosContainer.appendChild(habitosLabel)
+
+    let checkboxContainerHabitos = createDOMContainer('checkboxContainer')
 
     for (let i=0; i<habitos.length;i++){
         console.log(habitos[i])
@@ -172,9 +185,11 @@ let addPatientModalContent = () => {
         container.appendChild(currentAlergyInput)
         container.appendChild(currentAlergyLabel)
 
-        habitosContainer.appendChild(container)
+        checkboxContainerHabitos.appendChild(container)
     }
     
+    habitosContainer.appendChild(checkboxContainerHabitos)
+
     bottomSide.appendChild(habitosContainer)
 
     /* Left Side */

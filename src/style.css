@@ -186,6 +186,8 @@ button:focus {
     font-weight: bold;
 } 
 
+
+
 .patientFormTop{
     display: flex;
 }
@@ -199,15 +201,57 @@ button:focus {
     gap: 10px;
 }
 
+.formTitle{
+    font-weight: bold;
+    font-size: calc(15px + 1vw);
+    border-radius: 10px;
+    background-color: var(--navy);
+    padding-left: 20px;
+    color: var(--white);
+}
+.formTextInput{
+    padding: 5px;
+    font-size: calc(3px + 1vw);
+    border-radius: 10px;
+    border: solid 1px black;
+    padding-left: 10px;
+}
+
+.selectInput{
+    padding: 5px;
+    font-size: calc(3px + 1vw);
+    border-radius: 10px;
+    border: solid 1px black;
+}
+
+
 .patientFormBottom{
     display: flex;
+    gap: 10px;
 }
+
+
 
 .alergiasContainer , .enfermedadesContainer, .habitosContainer{
     display: flex;
     flex-direction: column;
 }
 
+.alergiasContainer   > .formTitle, .enfermedadesContainer  > .formTitle, .habitosContainer  > .formTitle{
+    font-weight: bold;
+    font-size: calc(15px + 1vw);
+    border-radius: 10px;
+    background-color: var(--navy);
+    color: var(--white);
+    padding-left: 0;
+    text-align: center;
+}
+
+.checkboxContainer{
+    width: 600px;
+    flex-wrap: wrap;
+    height: 300px;
+}
 
   /* The Close Button */
 .close {
