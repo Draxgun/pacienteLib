@@ -267,6 +267,8 @@ let addPatientModalContent = () => {
 
 let checkFormValues = () => {
     let a = document.querySelectorAll('#patientForm input, #patientForm select')
+
+    let patientAlergy = document.querySelectorAll('.alergiasContainer > .checkboxContainer > .checkbox > input')
     return a
 }
 
