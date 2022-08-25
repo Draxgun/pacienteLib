@@ -224,6 +224,12 @@ button:focus {
     border: solid 1px black;
 }
 
+.noteBox{
+    height: 100%;
+    padding: 5px;
+    font-size: calc(3px + 1vw);
+    resize: none;
+}
 
 .patientFormBottom{
     justify-content: center;
@@ -231,8 +237,6 @@ button:focus {
     gap: 50px;
     flex: auto;
 }
-
-
 
 .alergiasContainer , .enfermedadesContainer, .habitosContainer{
     display: flex;
@@ -244,6 +248,7 @@ button:focus {
 .enfermedadesContainer{
     flex: 5;
 }
+
 
 .alergiasContainer   > .formTitle, .enfermedadesContainer  > .formTitle, .habitosContainer  > .formTitle{
     font-weight: bold;

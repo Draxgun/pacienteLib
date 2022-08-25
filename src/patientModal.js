@@ -20,7 +20,7 @@ let addPatientModalContent = () => {
 
 
     /* Main container for the modal */
-    let mainForm = createDOMElement('form','patientForm','','')
+    let mainForm = createDOMElement('form','patientForm','','patientForm')
 
     /* Patient form sides */
     let rightSide = createDOMContainer('patientFormRight')
@@ -35,6 +35,8 @@ let addPatientModalContent = () => {
     
     let nameInput = createDOMElement('input','formTextInput','','fname')
     nameInput.type = 'text'
+    nameInput.setAttribute('id','fname')
+    nameInput.setAttribute('required','')
 
     rightSide.appendChild(nameLabel);
     rightSide.appendChild(nameInput);
@@ -45,6 +47,8 @@ let addPatientModalContent = () => {
     generalLabel.setAttribute('for','fgeneral')
     
     let generalInput = createDOMElement('select','selectInput','','fgeneral')
+    generalInput.setAttribute('id','fgeneral')
+    generalInput.setAttribute('required','')
 
 
     for(let i = 0; i < general.length; i++){
@@ -59,7 +63,8 @@ let addPatientModalContent = () => {
     specificLabel.setAttribute('for','fspecific')
     
     let specificInput = createDOMElement('select','selectInput','','fspecific')
-
+    specificInput.setAttribute('id','fspecific')
+    specificInput.setAttribute('required','')
 
     generalInput.addEventListener('change',(event) =>{
         
@@ -90,6 +95,8 @@ let addPatientModalContent = () => {
     tratamientosLabel.setAttribute('for','ftratamiento')
     
     let tratamientosInput = createDOMElement('select','selectInput','','ftratamiento')
+    tratamientosInput.setAttribute('id','ftratamiento')
+    tratamientosInput.setAttribute('required','')
     
     for(let i = 0; i < tratamientos.length; i++){
         tratamientosInput.options.add(new Option(tratamientos[i], tratamientos[i]));
@@ -108,7 +115,6 @@ let addPatientModalContent = () => {
     let checkboxContainerAlergias = createDOMContainer('checkboxContainer')
 
     for (let i=0; i<alergias.length;i++){
-        console.log(alergias[i])
         let currentAlergyInput = createDOMElement('input','alergyCheckbox','',`alergy${alergias[i]}`)
         currentAlergyInput.type = 'checkbox'
         currentAlergyInput.setAttribute('name',alergias[i])
@@ -140,7 +146,6 @@ let addPatientModalContent = () => {
     let checkboxContainerEnfermedades = createDOMContainer('checkboxContainer')
 
     for (let i=0; i<enfermedades.length;i++){
-        console.log(enfermedades[i])
         let currentAlergyInput = createDOMElement('input','alergyCheckbox','',`alergy${enfermedades[i]}`)
         currentAlergyInput.type = 'checkbox'
         currentAlergyInput.setAttribute('name',enfermedades[i])
@@ -173,7 +178,6 @@ let addPatientModalContent = () => {
     let checkboxContainerHabitos = createDOMContainer('checkboxContainer')
 
     for (let i=0; i<habitos.length;i++){
-        console.log(habitos[i])
         let currentAlergyInput = createDOMElement('input','alergyCheckbox','',`alergy${habitos[i]}`)
         currentAlergyInput.type = 'checkbox'
         currentAlergyInput.setAttribute('name',habitos[i])
@@ -198,8 +202,10 @@ let addPatientModalContent = () => {
     let edadLabel = createDOMElement('label','formTitle','Edad')
     edadLabel.setAttribute('for','fedad')
 
-    let edadInput = createDOMElement('input','ageInput','','fedad')
+    let edadInput = createDOMElement('input','formTextInput','','fedad')
     edadInput.type = 'number'
+    edadInput.setAttribute('id','fedad')
+    edadInput.setAttribute('required','')
 
     leftSide.appendChild(edadLabel)
     leftSide.appendChild(edadInput)
@@ -208,7 +214,10 @@ let addPatientModalContent = () => {
     let sexoLabel = createDOMElement('label','formTitle','Sexo')
     sexoLabel.setAttribute('for','fsexo')
 
-    let sexoInput = createDOMElement('select','sexInput','','fsexo')
+    let sexoInput = createDOMElement('select','selectInput','','fsexo')
+    sexoInput.setAttribute('id','fsexo')
+    sexoInput.setAttribute('required','')
+    
     let sexes = ['Masculino','Femenino','Otro']
 
     for(let i = 0; i < sexes.length; i++){
@@ -218,11 +227,33 @@ let addPatientModalContent = () => {
     leftSide.appendChild(sexoLabel)
     leftSide.appendChild(sexoInput)
 
+    /* Notas */
+    let notesLabel = createDOMElement('label','formTitle','Notas')
+    notesLabel.setAttribute('for','fnotas')
+    
+    let notesBox = createDOMElement('textarea','noteBox','','fnotas')
+
+    leftSide.appendChild(notesLabel)
+    leftSide.appendChild(notesBox)
+
+    /*Submit Bottom */
+    let submitButton = createDOMElement('button','submitButton','Agregar')
+
+    submitButton.addEventListener('click',()=>{
+        console.log('hola')
+        let test = checkFormValues()
+
+        test.forEach(element => {
+            console.log(element.value)
+            
+        });
+    })
 
     topSide.appendChild(rightSide);
     topSide.appendChild(leftSide);
-    mainForm.appendChild(topSide)
+    mainForm.appendChild(topSide);
     mainForm.appendChild(bottomSide);
+    mainForm.appendChild(submitButton);
 
 
 
@@ -231,6 +262,12 @@ let addPatientModalContent = () => {
     createModalStructure(mainForm,'modal','Agregar Paciente',addButton)
     return mainForm
  
+}
+
+
+let checkFormValues = () => {
+    let a = document.querySelectorAll('#patientForm input, #patientForm select')
+    return a
 }
 
 export{
