@@ -228,7 +228,8 @@ button:focus {
 .patientFormBottom{
     justify-content: center;
     display: flex;
-    gap: 100px;
+    gap: 50px;
+    flex: auto;
 }
 
 
@@ -236,6 +237,12 @@ button:focus {
 .alergiasContainer , .enfermedadesContainer, .habitosContainer{
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    flex: auto;
+}
+
+.enfermedadesContainer{
+    flex: 5;
 }
 
 .alergiasContainer   > .formTitle, .enfermedadesContainer  > .formTitle, .habitosContainer  > .formTitle{
@@ -251,13 +258,14 @@ button:focus {
 .enfermedadesContainer > .checkboxContainer{
     display: flex;
     flex-direction: column;
-    width: auto;
     flex-wrap: wrap;
-    height: 300px;
-    padding: 20px;
+    height: 250px;
+    padding: 10px;
+    background-color: var(--white);
 }
-.enfermedadesContainer{
-    width: auto;
+
+.checkboxContainer{
+    font-size: calc(1px + 1vw);
 }
 
 
