@@ -287,6 +287,7 @@ let addPatientModalContent = () => {
         let newPatient = new Paciente(patient.name,patient.edad,patient.sex,patient.general,patient.specific,patient.tratamiento,patient.farmaco,patient.enfermedades,patient.alergy,patient.habitos)
 
         patientDataBase.addPatient(newPatient)
+        clearForm()
         closeForm()
     })
 
@@ -345,10 +346,12 @@ let clearForm = () => {
     let inputs = form.querySelectorAll('input, select,textarea')
 
     inputs.forEach(input => {
-        if(input.type === 'text' || input.type === 'textarea'){
-            input.textContent = ''
-        }else{
-
+        if(input.type === 'text' || input.type === 'textarea' || input.type === 'number'){
+            input.value = ''
+        }else if(input.type === 'checkbox'){
+            input.checked = false
+        }else if (input.type === 'select-one'){
+            input.selectedIndex = -1
         }
     });
 }
