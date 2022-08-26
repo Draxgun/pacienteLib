@@ -24,7 +24,6 @@ import tratamientos from './excel/tratamientos.csv'
 
 let loadData = () =>{
 
-
     let generalArray = deArray(general)
     let alergiasArray = deArray(alergias)
     let enfermedadesArray = deArray(enfermedades)
@@ -34,8 +33,6 @@ let loadData = () =>{
     
     let generalesArray = [dentofacial,caries,dientes,lengua,pulpa,salivales,estomatitis,gingivitis,luxacion,labiosOtros,maxilaresOtros,tejidosOtros,enciaTranstorno,dientesOtros,quistes,desarrollo]
     
-    
-
     let mainArray = [generalArray,alergiasArray,enfermedadesArray,habitosArray,tratamientosArray,generalesArray]
     
     return mainArray

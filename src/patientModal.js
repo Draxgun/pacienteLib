@@ -52,6 +52,10 @@ let addPatientModalContent = () => {
     generalInput.setAttribute('id','fgeneral')
     generalInput.setAttribute('required','')
 
+    generalInput.options.add(new Option('','',true,true))
+    generalInput.options[0].setAttribute('disabled','')
+    generalInput.options[0].setAttribute('hidden','')
+
 
     for(let i = 0; i < general.length; i++){
         generalInput.options.add(new Option(general[i], general[i]));
@@ -68,6 +72,8 @@ let addPatientModalContent = () => {
     specificInput.setAttribute('id','fspecific')
     specificInput.setAttribute('required','')
 
+
+
     generalInput.addEventListener('change',(event) =>{
         
         let elementIndexSelected = general.indexOf(event.target.value)
@@ -78,6 +84,9 @@ let addPatientModalContent = () => {
             return element[1]
         })
         
+        specificInput.options.add(new Option('','',true,true))
+        specificInput.options[0].setAttribute('disabled','')
+        specificInput.options[0].setAttribute('hidden','')
 
         /*Clears all values of the list an resets them */
         specificInput.length =0;
@@ -100,9 +109,17 @@ let addPatientModalContent = () => {
     tratamientosInput.setAttribute('id','ftratamiento')
     tratamientosInput.setAttribute('required','')
     
+
+
+    tratamientosInput.options.add(new Option('','',true,true))
+    tratamientosInput.options[0].setAttribute('disabled','')
+    tratamientosInput.options[0].setAttribute('hidden','')
+
     for(let i = 0; i < tratamientos.length; i++){
         tratamientosInput.options.add(new Option(tratamientos[i], tratamientos[i]));
     } 
+
+    
 
     rightSide.appendChild(tratamientosLabel);
     rightSide.appendChild(tratamientosInput);
@@ -219,6 +236,10 @@ let addPatientModalContent = () => {
     let sexoInput = createDOMElement('select','selectInput','','fsexo')
     sexoInput.setAttribute('id','fsexo')
     sexoInput.setAttribute('required','')
+
+    sexoInput.options.add(new Option('','',true,true))
+    sexoInput.options[0].setAttribute('disabled','')
+    sexoInput.options[0].setAttribute('hidden','')
     
     let sexes = ['Masculino','Femenino','Otro']
 
@@ -236,6 +257,9 @@ let addPatientModalContent = () => {
     let farmacoInput = createDOMElement('select','formTextInput','','ffarmaco')
     farmacoInput.setAttribute('id','ffarmaco')
 
+    farmacoInput.options.add(new Option('','',true,true))
+    farmacoInput.options[0].setAttribute('disabled','')
+    farmacoInput.options[0].setAttribute('hidden','')
         
     let farmaco = ['Si','No']
 
@@ -256,13 +280,14 @@ let addPatientModalContent = () => {
     leftSide.appendChild(notesBox)
 
     /*Submit Bottom */
-    let submitButton = createDOMElement('button','submitButton','Agregar')
+    let submitButton = createDOMElement('submit','submitButton','Agregar')
 
     submitButton.addEventListener('click',()=>{
         let patient = checkFormValues()
         let newPatient = new Paciente(patient.name,patient.edad,patient.sex,patient.general,patient.specific,patient.tratamiento,patient.farmaco,patient.enfermedades,patient.alergy,patient.habitos)
 
         patientDataBase.addPatient(newPatient)
+        closeForm()
     })
 
     topSide.appendChild(rightSide);
@@ -301,12 +326,31 @@ let checkFormValues = () => {
     return patientInfo
 }
 
+let closeForm = () => {
+    let modalContainer = document.getElementById('modal')
+    modalContainer.style.display = "none";
+    document.body.removeChild(modalContainer)
+}
+
 let node2Array = (node) => {
     let array = []
     node.forEach(element => {
         array.push(element.value)     
     });
     return array
+}
+
+let clearForm = () => {
+    let form = document.querySelector('#patientForm')
+    let inputs = form.querySelectorAll('input, select,textarea')
+
+    inputs.forEach(input => {
+        if(input.type === 'text' || input.type === 'textarea'){
+            input.textContent = ''
+        }else{
+
+        }
+    });
 }
 
 export{
