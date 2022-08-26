@@ -266,7 +266,6 @@ button:focus {
     flex-wrap: wrap;
     height: 250px;
     padding: 10px;
-    background-color: var(--white);
 }
 
 .checkboxContainer{
