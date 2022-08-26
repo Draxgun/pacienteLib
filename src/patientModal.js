@@ -22,6 +22,7 @@ let addPatientModalContent = () => {
 
     /* Main container for the modal */
     let mainForm = createDOMElement('form','patientForm','','patientForm')
+    mainForm.setAttribute('onsubmit','return false')
 
     /* Patient form sides */
     let rightSide = createDOMContainer('patientFormRight')
@@ -261,7 +262,7 @@ let addPatientModalContent = () => {
         let patient = checkFormValues()
         let newPatient = new Paciente(patient.name,patient.edad,patient.sex,patient.general,patient.specific,patient.tratamiento,patient.farmaco,patient.enfermedades,patient.alergy,patient.habitos)
 
-        global.patientDataBase.addPatient(newPatient)
+        patientDataBase.addPatient(newPatient)
     })
 
     topSide.appendChild(rightSide);
