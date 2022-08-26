@@ -1,6 +1,7 @@
 import {createDOMContainer,createDOMElement} from './domCreatorFunctions'
 import {createModalStructure} from './modalCreators'
 import {loadData} from './data'
+import {Paciente,Biblioteca} from './paciente'
 
 
 
@@ -227,6 +228,23 @@ let addPatientModalContent = () => {
     leftSide.appendChild(sexoLabel)
     leftSide.appendChild(sexoInput)
 
+    /*Farmaco*/
+    let farmacoLabel = createDOMElement('label','formTitle','Farmacoterapia')
+    farmacoLabel.setAttribute('for','ffarmaco')
+
+    let farmacoInput = createDOMElement('select','formTextInput','','ffarmaco')
+    farmacoInput.setAttribute('id','ffarmaco')
+
+        
+    let farmaco = ['Si','No']
+
+    for(let i = 0; i < farmaco.length; i++){
+        farmacoInput.options.add(new Option(farmaco[i], farmaco[i]));
+    } 
+
+    leftSide.appendChild(farmacoLabel)
+    leftSide.appendChild(farmacoInput)
+
     /* Notas */
     let notesLabel = createDOMElement('label','formTitle','Notas')
     notesLabel.setAttribute('for','fnotas')
@@ -240,13 +258,10 @@ let addPatientModalContent = () => {
     let submitButton = createDOMElement('button','submitButton','Agregar')
 
     submitButton.addEventListener('click',()=>{
-        console.log('hola')
-        let test = checkFormValues()
+        let patient = checkFormValues()
+        let newPatient = new Paciente(patient.name,patient.edad,patient.sex,patient.general,patient.specific,patient.tratamiento,patient.farmaco,patient.enfermedades,patient.alergy,patient.habitos)
 
-        test.forEach(element => {
-            console.log(element.value)
-            
-        });
+        global.patientDataBase.addPatient(newPatient)
     })
 
     topSide.appendChild(rightSide);
@@ -266,10 +281,31 @@ let addPatientModalContent = () => {
 
 
 let checkFormValues = () => {
-    let a = document.querySelectorAll('#patientForm input, #patientForm select')
 
-    let patientAlergy = document.querySelectorAll('.alergiasContainer > .checkboxContainer > .checkbox > input')
-    return a
+    let patientInfo = {
+        name : document.getElementById('fname').value,
+        general: document.getElementById('fgeneral').value,
+        farmaco: document.getElementById('ffarmaco').value,
+        specific: document.getElementById('fspecific').value,
+        tratamiento: document.getElementById('ftratamiento').value,
+        edad: document.getElementById('fedad').value,
+        sex: document.getElementById('fsexo').value,
+        notes: document.getElementById('fnotas').value,
+        alergy: node2Array(document.querySelectorAll('.alergiasContainer > .checkboxContainer > .checkbox > input:checked')),
+        enfermedades: node2Array(document.querySelectorAll('.enfermedadesContainer > .checkboxContainer > .checkbox > input:checked')),
+        habitos: node2Array(document.querySelectorAll('.habitosContainer > .checkboxContainer > .checkbox > input:checked'))
+    }
+    
+
+    return patientInfo
+}
+
+let node2Array = (node) => {
+    let array = []
+    node.forEach(element => {
+        array.push(element.value)     
+    });
+    return array
 }
 
 export{

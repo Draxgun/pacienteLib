@@ -1,11 +1,10 @@
 class Paciente {
 
-    constructor(name,age,sex,visits,general,especifico,tratamiento,farmacoterapia,enfermedades,alergias,habitos) {
+    constructor(name,age,sex,general,especifico,tratamiento,farmacoterapia,enfermedades,alergias,habitos) {
       this.name = name;
       this.age = age;
       this.sex = sex ;
       this.general = general;
-      this.visits = visits;
       this.especifico = especifico;
       this.tratamiento = tratamiento;
       this.farmacoterapia = farmacoterapia;
@@ -35,6 +34,10 @@ class Cita {
 class Biblioteca {
   constructor(pacientes){
     this.pacientes = pacientes
+  }
+
+  addPatient = (Paciente) => {
+    this.pacientes.push(Paciente)
   }
 }
 
