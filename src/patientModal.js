@@ -2,6 +2,7 @@ import {createDOMContainer,createDOMElement} from './domCreatorFunctions'
 import {createModalStructure} from './modalCreators'
 import {loadData} from './data'
 import {Paciente,Biblioteca} from './paciente'
+import {saveInLocalStorage, getFromLocalStorage} from './localStorage'
 
 
 
@@ -286,7 +287,11 @@ let addPatientModalContent = () => {
         let patient = checkFormValues()
         let newPatient = new Paciente(patient.name,patient.edad,patient.sex,patient.general,patient.specific,patient.tratamiento,patient.farmaco,patient.enfermedades,patient.alergy,patient.habitos)
 
-        patientDataBase.addPatient(newPatient)
+        let patientDatabase = getFromLocalStorage('patientDatabase')
+        console.log(patientDatabase)
+        
+        patientDatabase.push(newPatient)
+        saveInLocalStorage('patientDatabase',patientDatabase)
         clearForm()
         closeForm()
     })

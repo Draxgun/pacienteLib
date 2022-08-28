@@ -4,7 +4,6 @@ import {Paciente,Biblioteca} from './paciente'
 import{addPatientModalContent} from './patientModal'
 
 
-global.patientDataBase = new Biblioteca([])
 
 
 loadPageStructure()
