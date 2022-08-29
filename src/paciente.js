@@ -1,6 +1,6 @@
 class Paciente {
 
-    constructor(name,age,sex,general,especifico,tratamiento,farmacoterapia,enfermedades,alergias,habitos) {
+    constructor(name,age,sex,general,especifico,tratamiento,farmacoterapia,enfermedades,alergias,habitos,date) {
       this.name = name;
       this.age = age;
       this.sex = sex ;
@@ -11,6 +11,7 @@ class Paciente {
       this.enfermedades = enfermedades;
       this.alergias = alergias;
       this.habitos = habitos;
+      this.date = date;
       
     }
     

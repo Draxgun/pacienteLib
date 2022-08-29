@@ -3,6 +3,7 @@ import {createModalStructure} from './modalCreators'
 import {loadData} from './data'
 import {Paciente,Biblioteca} from './paciente'
 import {saveInLocalStorage, getFromLocalStorage} from './localStorage'
+import {getTodaysDate} from './dateFunctions'
 
 
 
@@ -285,7 +286,7 @@ let addPatientModalContent = () => {
 
     submitButton.addEventListener('click',()=>{
         let patient = checkFormValues()
-        let newPatient = new Paciente(patient.name,patient.edad,patient.sex,patient.general,patient.specific,patient.tratamiento,patient.farmaco,patient.enfermedades,patient.alergy,patient.habitos)
+        let newPatient = new Paciente(patient.name,patient.edad,patient.sex,patient.general,patient.specific,patient.tratamiento,patient.farmaco,patient.enfermedades,patient.alergy,patient.habitos,patient.date)
 
         let patientDatabase = getFromLocalStorage('patientDatabase')
         console.log(patientDatabase)
@@ -325,7 +326,8 @@ let checkFormValues = () => {
         notes: document.getElementById('fnotas').value,
         alergy: node2Array(document.querySelectorAll('.alergiasContainer > .checkboxContainer > .checkbox > input:checked')),
         enfermedades: node2Array(document.querySelectorAll('.enfermedadesContainer > .checkboxContainer > .checkbox > input:checked')),
-        habitos: node2Array(document.querySelectorAll('.habitosContainer > .checkboxContainer > .checkbox > input:checked'))
+        habitos: node2Array(document.querySelectorAll('.habitosContainer > .checkboxContainer > .checkbox > input:checked')),
+        date: getTodaysDate()
     }
     
 
