@@ -4,6 +4,7 @@ import {loadData} from './data'
 import {Paciente,Biblioteca} from './paciente'
 import {saveInLocalStorage, getFromLocalStorage} from './localStorage'
 import {getTodaysDate} from './dateFunctions'
+import {addPatientTable} from './patientTable'
 
 
 
@@ -295,6 +296,7 @@ let addPatientModalContent = () => {
         saveInLocalStorage('patientDatabase',patientDatabase)
         clearForm()
         closeForm()
+        addPatientTable()
     })
 
     topSide.appendChild(rightSide);
