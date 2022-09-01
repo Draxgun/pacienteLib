@@ -5,6 +5,7 @@ import {Paciente,Biblioteca} from './paciente'
 import {saveInLocalStorage, getFromLocalStorage} from './localStorage'
 import {getTodaysDate} from './dateFunctions'
 import {addPatientTable} from './patientTable'
+import { getDaysInMonth } from 'date-fns'
 
 
 
@@ -287,10 +288,9 @@ let addPatientModalContent = () => {
 
     submitButton.addEventListener('click',()=>{
         let patient = checkFormValues()
-        let newPatient = new Paciente(patient.name,patient.edad,patient.sex,patient.general,patient.specific,patient.tratamiento,patient.farmaco,patient.enfermedades,patient.alergy,patient.habitos,patient.date)
+        let newPatient = new Paciente(patient.name,patient.edad,patient.sex,patient.general,patient.specific,patient.tratamiento,patient.farmaco,patient.enfermedades,patient.alergy,patient.habitos,patient.date,patient.id,patient.notes)
 
         let patientDatabase = getFromLocalStorage('patientDatabase')
-        console.log(patientDatabase)
         
         patientDatabase.push(newPatient)
         saveInLocalStorage('patientDatabase',patientDatabase)
@@ -329,7 +329,9 @@ let checkFormValues = () => {
         alergy: node2Array(document.querySelectorAll('.alergiasContainer > .checkboxContainer > .checkbox > input:checked')),
         enfermedades: node2Array(document.querySelectorAll('.enfermedadesContainer > .checkboxContainer > .checkbox > input:checked')),
         habitos: node2Array(document.querySelectorAll('.habitosContainer > .checkboxContainer > .checkbox > input:checked')),
-        date: getTodaysDate()
+        date: getTodaysDate(),
+        id: getFromLocalStorage('patientDatabase').length+1
+        
     }
     
 

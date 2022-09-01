@@ -1,5 +1,6 @@
 import {createDOMContainer,createDOMElement} from './domCreatorFunctions'
 import {saveInLocalStorage, getFromLocalStorage} from './localStorage'
+import  {createPatientFileModal} from './patientFileModal'
 
 
 let addPatientTable = () => {
@@ -16,6 +17,8 @@ let addPatientTable = () => {
         addPatientRow(patient)
     });
 
+    addClickTableEvents()
+
 }
 
 let addPatientRow = (patient) => {
@@ -28,19 +31,38 @@ let addPatientRow = (patient) => {
     let row = patientTable.insertRow(0);
 
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    let date = row.insertCell(0);
-    let name = row.insertCell(1);
-    let age = row.insertCell(2);
-    let sex = row.insertCell(3);
-    let general = row.insertCell(4);
+    let id = row.insertCell(0)
+    let date = row.insertCell(1);
+    let name = row.insertCell(2);
+    let age = row.insertCell(3);
+    let sex = row.insertCell(4);
+    let general = row.insertCell(5);
 
     // Add some text to the new cells:
+    id.innerHTML = patient.id
     date.innerHTML = patient.date;
     name.innerHTML = patient.name;
     age.innerHTML = patient.age;
     sex.innerHTML = patient.sex;
     general.innerHTML = patient.general;
 
+}
+
+let addClickTableEvents = () => {
+    let  table = document.getElementById("patientTable");
+    let  rows = table.getElementsByTagName("tr");
+    for (let i = 0; i < rows.length; i++) {
+        for (let j = 0; j < table.rows[i].cells.length; j++){
+            let  cell = table.rows[i].cells[j];
+            cell.addEventListener('dblclick',()=>{
+                let patientArray = getFromLocalStorage('patientDatabase')
+                let patientID = table.rows[i].cells[0].innerHTML
+                let patient = patientArray.find(patientTest => patientTest.id == patientID)
+
+                console.log(patient)
+            })
+        }
+    }
 }
 
 

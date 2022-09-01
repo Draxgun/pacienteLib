@@ -8,7 +8,6 @@ let getFromLocalStorage = (key) => {
     
     if (JSON.parse(localStorage.getItem(key))){     
         let value = JSON.parse(localStorage.getItem(key))
-        console.log('El array existe')
         return value
     }else{
         let placeHolder = []

@@ -139,6 +139,7 @@ thead, tbody tr {
     width: 100%;
     table-layout: fixed;
 }
+
 tbody {
     display: block;
     overflow-y: auto;
