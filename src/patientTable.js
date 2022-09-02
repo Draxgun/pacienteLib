@@ -22,6 +22,11 @@ let addPatientTable = () => {
     addClickTableEvents()
     addSortTableFunctions()
 
+    let search = document.getElementById("searchbar");
+    search.addEventListener('keydown',()=>{
+        searchTable()
+    })
+
 }
 
 let addPatientRow = (patient) => {
@@ -124,9 +129,6 @@ let sortTable = (n) => {
     }
 }
 
-
-
-
 let addSortTableFunctions = () =>{
     let  table = document.getElementById("patientTable");
     let  headers = table.getElementsByTagName("th");
@@ -135,6 +137,28 @@ let addSortTableFunctions = () =>{
         head.addEventListener('click',()=>{
             sortTable(i)
         })
+    }
+}
+
+let searchTable = () => {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchbar");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("patientTable");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+        } else {
+        tr[i].style.display = "none";
+        }
+    }
     }
 }
 
