@@ -330,12 +330,24 @@ let checkFormValues = () => {
         enfermedades: node2Array(document.querySelectorAll('.enfermedadesContainer > .checkboxContainer > .checkbox > input:checked')),
         habitos: node2Array(document.querySelectorAll('.habitosContainer > .checkboxContainer > .checkbox > input:checked')),
         date: getTodaysDate(),
-        id: getFromLocalStorage('patientDatabase').length+1
-        
+        id: checkForId(),
     }
     
 
     return patientInfo
+}
+
+let checkForId = () => {
+    let database  = getFromLocalStorage('patientDatabase')
+    if (database.length != 0){
+        let id = database[database.length-1].id + 1
+        console.log(id)
+        return id
+    }else{
+        let id = 1
+        console.log(id)
+        return id
+    }
 }
 
 let closeForm = () => {
