@@ -1,6 +1,7 @@
 import {createDOMContainer,createDOMElement} from './domCreatorFunctions'
 import {saveInLocalStorage, getFromLocalStorage} from './localStorage'
 import  {createPatientFileModal} from './patientFileModal'
+import {createModalStructure} from './modalCreators'
 
 
 let addPatientTable = () => {
@@ -51,16 +52,17 @@ let addPatientRow = (patient) => {
 let addClickTableEvents = () => {
     let  table = document.getElementById("patientTable");
     let  rows = table.getElementsByTagName("tr");
-    for (let i = 0; i < rows.length; i++) {
+    let  patientArray = getFromLocalStorage('patientDatabase')
+    for (let i = 1; i < rows.length; i++) {    
         for (let j = 0; j < table.rows[i].cells.length; j++){
-            let  cell = table.rows[i].cells[j];
-            cell.addEventListener('dblclick',()=>{
-                let patientArray = getFromLocalStorage('patientDatabase')
-                let patientID = table.rows[i].cells[0].innerHTML
-                let patient = patientArray.find(patientTest => patientTest.id == patientID)
+            let cell = table.rows[i].cells[j];
+            let patientID = table.rows[i].cells[0].innerHTML;
+            let patient = patientArray.find(patientTest => patientTest.id == patientID)
+            let patientInfo = createPatientFileModal(patient)
+            createModalStructure(patientInfo,'modal','Informacion del paciente',cell)
 
-                console.log(patient)
-            })
+
+ 
         }
     }
 }
