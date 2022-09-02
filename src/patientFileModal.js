@@ -1,6 +1,9 @@
 import {createDOMContainer,createDOMElement} from './domCreatorFunctions'
 import {createModalStructure} from './modalCreators'
 import {Paciente,Biblioteca} from './paciente'
+import {saveInLocalStorage, getFromLocalStorage} from './localStorage'
+import {addPatientTable} from './patientTable'
+
 
 
 
@@ -107,6 +110,17 @@ let createPatientFileModal = (patient) => {
     let habitosLabel = createDOMElement('div','patientFileLabel','habitos')
     let habitosValue = createDOMElement('div','patientFieldValue',`${patient.habitos}`)
 
+    let deleteButton = createDOMElement('button','deleteButton','Eliminar paciente','delete')
+
+    deleteButton.addEventListener('click',()=>{
+        deletePatient(patient)
+        closeForm()
+        addPatientTable()
+    })
+
+    mainContainer.appendChild(deleteButton)
+
+
     bottomContainer.appendChild(habitosLabel)
     bottomContainer.appendChild(habitosValue)
 
@@ -116,8 +130,19 @@ let createPatientFileModal = (patient) => {
     mainContainer.appendChild(topContainer)
     mainContainer.appendChild(bottomContainer)
 
+
     return mainContainer
 }
+
+
+let deletePatient = (paciente) => {
+    let patientDatabase = getFromLocalStorage('patientDatabase')
+
+    patientDatabase = patientDatabase.filter(item => item.id !== paciente.id)
+    console.log()
+
+    saveInLocalStorage('patientDatabase',patientDatabase)
+} 
 
 
 let closeForm = () => {

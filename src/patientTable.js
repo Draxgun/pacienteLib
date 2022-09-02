@@ -2,7 +2,6 @@ import {createDOMContainer,createDOMElement} from './domCreatorFunctions'
 import {saveInLocalStorage, getFromLocalStorage} from './localStorage'
 import  {createPatientFileModal} from './patientFileModal'
 import {createModalStructure} from './modalCreators'
-import { he } from 'date-fns/locale'
 
 
 let addPatientTable = () => {
