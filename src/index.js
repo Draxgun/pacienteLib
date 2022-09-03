@@ -3,6 +3,7 @@ import './style.css';
 import {Paciente,Biblioteca} from './paciente'
 import{addPatientModalContent} from './patientModal'
 import {addPatientTable} from './patientTable'
+import {downloadSettings} from './download'
 
 
 
@@ -10,4 +11,5 @@ import {addPatientTable} from './patientTable'
 addPatientTable()
 loadPageStructure()
 addPatientModalContent()
+downloadSettings()
 
