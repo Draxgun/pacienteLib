@@ -382,3 +382,26 @@ cursor: pointer;
     justify-content: center;
     align-items: center;
 }
+
+#downloadButton,#loadLabel{
+    font-size: calc(3px + 1vw);
+    background-color: var(--cold);
+    padding: 10px;
+    color: var(--white);
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+}
+
+
+#downloadButton:hover,#loadLabel:hover{
+    filter: brightness(85%);
+}
+
+#loadButton{
+    display: none;
+}
+
+.exportContainer{
+    padding: 10px;
+}
