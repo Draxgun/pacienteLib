@@ -133,9 +133,16 @@ let createPatientFileModal = (patient) => {
     let deleteButton = createDOMElement('button','deleteButton','Eliminar paciente','delete')
 
     deleteButton.addEventListener('click',()=>{
-        deletePatient(patient)
-        closeForm()
-        addPatientTable()
+        if (confirm("Advertencia se esta borrando el paciente! Deseas confirmar esto?") == true) {
+            deletePatient(patient)
+            closeForm()
+            addPatientTable()
+          } else {
+            
+          }
+        
+        
+
     })
 
     buttonContainer.appendChild(deleteButton)
