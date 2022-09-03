@@ -86,7 +86,7 @@ let createPatientFileModal = (patient) => {
 
     /*notas Label*/
     let notasLabel = createDOMElement('div','patientFileLabel','notas')
-    let notasValue = createDOMElement('div','patientFieldValue',`${patient.notas}`)
+    let notasValue = createDOMElement('div','patientFieldValue',`${patient.notes}`)
 
     rightContainer.appendChild(notasLabel)
     rightContainer.appendChild(notasValue)
@@ -96,19 +96,39 @@ let createPatientFileModal = (patient) => {
     let alergiasLabel = createDOMElement('div','patientFileLabel','alergias')
     let alergiasValue = createDOMElement('div','patientFieldValue',`${patient.alergias}`)
 
-    bottomContainer.appendChild(alergiasLabel)
-    bottomContainer.appendChild(alergiasValue)
+    let bottomAlergiaContainer = createDOMContainer('bottomValueContainer')
+
+    bottomAlergiaContainer.appendChild(alergiasLabel)
+    bottomAlergiaContainer.appendChild(alergiasValue)
+
+    bottomContainer.appendChild(bottomAlergiaContainer)
     
     /*enfermedades Label*/
     let enfermedadesLabel = createDOMElement('div','patientFileLabel','enfermedades')
     let enfermedadesValue = createDOMElement('div','patientFieldValue',`${patient.enfermedades}`)
 
-    bottomContainer.appendChild(enfermedadesLabel)
-    bottomContainer.appendChild(enfermedadesValue)
+    let  bottomEnfermedadesContainer = createDOMContainer('bottomValueContainer')
+
+    bottomEnfermedadesContainer.appendChild(enfermedadesLabel)
+    bottomEnfermedadesContainer.appendChild(enfermedadesValue)
+
+    bottomContainer.appendChild(bottomEnfermedadesContainer)
+
+
 
     /*habitos Label*/
     let habitosLabel = createDOMElement('div','patientFileLabel','habitos')
     let habitosValue = createDOMElement('div','patientFieldValue',`${patient.habitos}`)
+
+    let bottomHabitosContainer = createDOMContainer('bottomValueContainer')
+
+    bottomHabitosContainer.appendChild(habitosLabel)
+    bottomHabitosContainer.appendChild(habitosValue)
+
+    bottomContainer.appendChild(bottomHabitosContainer)
+
+
+
 
     let deleteButton = createDOMElement('button','deleteButton','Eliminar paciente','delete')
 
@@ -118,17 +138,13 @@ let createPatientFileModal = (patient) => {
         addPatientTable()
     })
 
-    mainContainer.appendChild(deleteButton)
-
-
-    bottomContainer.appendChild(habitosLabel)
-    bottomContainer.appendChild(habitosValue)
 
     topContainer.appendChild(leftContainer)
     topContainer.appendChild(rightContainer)
 
     mainContainer.appendChild(topContainer)
     mainContainer.appendChild(bottomContainer)
+    mainContainer.appendChild(deleteButton)
 
 
     return mainContainer

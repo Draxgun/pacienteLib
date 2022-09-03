@@ -150,12 +150,6 @@ tbody::-webkit-scrollbar{
     display: none;
 }
 
-
-
-
-
-
-
 #addPatientButton{
     font-size: calc(3px + 1vw);
     background-color: var(--cold);
@@ -303,8 +297,6 @@ button:focus {
     font-size: calc(1px + 1vw);
 }
 
-
-
   /* The Close Button */
 .close {
 float: right;
@@ -320,4 +312,50 @@ font-weight: bold;
 color: black;
 text-decoration: none;
 cursor: pointer;
+}
+
+/* PatientFile */
+.patientFile{
+    display: flex;
+    flex-direction: column;
+}
+
+.patientFileTop{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.patientFileBottom{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px;
+}
+
+.patientFileLabel{
+    font-weight: bold;
+    font-size: calc(15px + 1vw);
+    color: var(--cold);
+    padding: 10px;
+}
+.patientFieldValue{
+    font-weight: bold;
+    font-size: calc(8px + 1vw);
+    color: var(--blue);
+    padding: 10px;
+}
+
+.patientFileLeft,.patientFileRight {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+}
+
+.bottomValueContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
