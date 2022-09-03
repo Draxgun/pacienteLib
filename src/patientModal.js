@@ -291,12 +291,37 @@ let addPatientModalContent = () => {
         let newPatient = new Paciente(patient.name,patient.edad,patient.sex,patient.general,patient.specific,patient.tratamiento,patient.farmaco,patient.enfermedades,patient.alergy,patient.habitos,patient.date,patient.id,patient.notes)
 
         let patientDatabase = getFromLocalStorage('patientDatabase')
+        console.log(newPatient)
+
+        let validators = {
+            'Nombre' : newPatient.name !== '',
+            'Edad' : newPatient.age !== '',
+            'Sexo'  : newPatient.sex !==  '',
+            'General' : newPatient.general !== '',
+            'Enfermedad especifica' :  newPatient.especifico !==  '',
+            'Farmacoterapia' : newPatient.farmacoterapia !==  '',
+            'Tratamiento': newPatient.tratamiento !==  '',
+        }
+
+        let conditons = Object.keys(validators).map(function(k){return(validators[k])});
+
+
+        let checker = arr => arr.every(v => v === true);
         
-        patientDatabase.push(newPatient)
-        saveInLocalStorage('patientDatabase',patientDatabase)
-        clearForm()
-        closeForm()
-        addPatientTable()
+        console.log(conditons)
+        console.log(checker(conditons))
+        
+        if(checker(conditons)){
+            patientDatabase.push(newPatient)
+            saveInLocalStorage('patientDatabase',patientDatabase)
+            clearForm()
+            closeForm()
+            addPatientTable()
+        }else{
+            let missingField = Object.keys(validators)[conditons.indexOf(false)]
+            alert(`Falta ${missingField} de llenar`)
+        }
+
     })
 
     topSide.appendChild(rightSide);
@@ -341,11 +366,9 @@ let checkForId = () => {
     let database  = getFromLocalStorage('patientDatabase')
     if (database.length != 0){
         let id = database[database.length-1].id + 1
-        console.log(id)
         return id
     }else{
         let id = 1
-        console.log(id)
         return id
     }
 }
